@@ -5,7 +5,14 @@ import { GET_ISSUES, SET_COMMENT } from './query/query';
 
 export default function SetComment({ id, repoName, repoOwner }) {
 
-    const [addComment, { loading, error, data }] = useMutation(SET_COMMENT, {
+
+    const [inputValue, setInputValue] = useState('')
+
+    const onChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const [addComment, { loading, error }] = useMutation(SET_COMMENT, {
         refetchQueries: [
             {
                 query: GET_ISSUES,
@@ -20,10 +27,10 @@ export default function SetComment({ id, repoName, repoOwner }) {
 
     return (
         <div className='comment'>
-            <textarea id={"comment"+id} className='commentInput' />
+            <textarea id={"comment" + id} className='commentInput' onChange={onChange} />
             <button className='buttonComment'
                 onClick={() => (
-                    addComment({ variables: {input: { subjectId: id, body: document.getElementById("comment"+id).value }}})
+                    addComment({ variables: { input: { subjectId: id, body: inputValue } } })
                 )}
             >
                 ADD COMMENT

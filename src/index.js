@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { client } from './AppoloClient/clent';
+import { client } from './ApolloClient/client';
 
 import {ApolloProvider} from '@apollo/client';
 

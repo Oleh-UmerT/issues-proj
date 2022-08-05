@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { GET_ISSUES } from './query/query';
 import SetComment from './SetComment';
 
@@ -7,12 +7,11 @@ import SetComment from './SetComment';
 export default function GetIssues({ props }) {
 
     const [showField, setShowField] = useState(false)
-    const [referesh, setRefresh] = useState(false)
 
     const repoInfo = props.split("/")
     const repoName = repoInfo.pop()
     const repoOwner = String(repoInfo.pop())
-    
+
     const { loading, error, data } = useQuery(GET_ISSUES, { variables: { repoName, repoOwner } })
 
     if (loading) return 'Loading...';
@@ -24,7 +23,7 @@ export default function GetIssues({ props }) {
     return (
         <div>
             <h1>{repoName}</h1>
-            <hr/>
+            <hr />
             {
                 data.repository.issues.nodes.map((item, index) => (
                     <div key={index} >
@@ -39,16 +38,16 @@ export default function GetIssues({ props }) {
 
                         ))}
                         {
-                            showField === `true${item.id}`? 
-                            <SetComment id={item.id} repoName={repoName} repoOwner={repoOwner}/>
-                            :
-                            <button className='buttonComment'
-                                onClick={() => (
-                                    setShowField(true+item.id)
-                                )}
-                            >
-                                ADD NEW COMMENT
-                            </button>
+                            showField === `true${item.id}` ?
+                                <SetComment id={item.id} repoName={repoName} repoOwner={repoOwner} />
+                                :
+                                <button className='buttonComment'
+                                    onClick={() => (
+                                        setShowField(true + item.id)
+                                    )}
+                                >
+                                    ADD NEW COMMENT
+                                </button>
                         }
 
                         <hr />
