@@ -1,10 +1,20 @@
-import Main from './components/main'
-
+import Search from './components/Search'
+import GetIssues from './components/GetIssues'
+import { useState } from 'react';
+import './styles/App.css'
 
 function App() {
 
+  const [link, setLink] = useState('')
+
   return (
-    <Main />
+    <div className='App App-header'>
+      <Search setLink={setLink}/>
+      {
+        link && <GetIssues link={link} />
+      }
+    </div>
+
   );
 }
 

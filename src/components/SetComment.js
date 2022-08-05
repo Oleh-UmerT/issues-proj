@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
-import { GET_ISSUES, SET_COMMENT } from './query/query';
+import { GET_ISSUES, SET_COMMENT } from '../query/query';
 
 
 export default function SetComment({ id, repoName, repoOwner }) {

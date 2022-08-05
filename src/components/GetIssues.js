@@ -1,24 +1,22 @@
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
-import { GET_ISSUES } from './query/query';
+import { GET_ISSUES } from '../query/query';
 import SetComment from './SetComment';
 
 
-export default function GetIssues({ props }) {
+export default function GetIssues({ link }) {
 
     const [showField, setShowField] = useState(false)
 
-    const repoInfo = props.split("/")
+    
+
+    const repoInfo = link.split("/")
     const repoName = repoInfo.pop()
     const repoOwner = String(repoInfo.pop())
-
     const { loading, error, data } = useQuery(GET_ISSUES, { variables: { repoName, repoOwner } })
 
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
-
-    console.log(data)
-
 
     return (
         <div>
