@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.buttonComment {
+  height: 45px;
+  width: 300px;
+  font-size: 24px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0 auto 0 auto;
+  cursor: pointer;
+  background: blanchedalmond;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentInput {
+  margin-bottom: 15px;
+  width: 500px;
+  height: 90px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background: lightgray;
+  margin: 0 auto 15px auto;
+}

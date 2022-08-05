@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.search {
+  display: inline-block;
+}
+
+.searchInput {
+  width: 500px;
+  height: 45px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background: lightgray;
+}
+
+
+.button {
+  height: 45px;
+  width: 300px;
+  font-size: 24px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  background: blanchedalmond;
+}

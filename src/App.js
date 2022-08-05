@@ -1,22 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import GetIssues from './GetIssues';
+import SetComment from './SetComment';
+import { useState } from 'react';
+
 
 function App() {
+  
+  const [link, setLink] = useState('')
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div className='search'>
+        <input type="text" id="link" className='searchInput'/>
+        <button className='button' onClick={() => {
+          setLink(document.getElementById("link").value)
+        }}>SEARCH</button>
+      </div>
+      
+      <GetIssues props={link}/>
+
       </header>
     </div>
   );
