@@ -13,16 +13,7 @@ export default function GetIssues({ props }) {
     const repoName = repoInfo.pop()
     const repoOwner = String(repoInfo.pop())
     
-    const { loading, error, data, refetch } = useQuery(GET_ISSUES, { variables: { repoName, repoOwner } })
-
-    useEffect(() => {
-        if(referesh === true) {
-            refetch({ variables: { repoName, repoOwner } })
-            console.log("just check")
-            setRefresh(false)
-        }
-    })
-    
+    const { loading, error, data } = useQuery(GET_ISSUES, { variables: { repoName, repoOwner } })
 
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
@@ -49,7 +40,7 @@ export default function GetIssues({ props }) {
                         ))}
                         {
                             showField === `true${item.id}`? 
-                            <SetComment id={item.id} setRefresh={setRefresh}/>
+                            <SetComment id={item.id} repoName={repoName} repoOwner={repoOwner}/>
                             :
                             <button className='buttonComment'
                                 onClick={() => (
